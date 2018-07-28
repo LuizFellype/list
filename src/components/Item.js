@@ -1,23 +1,23 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
+// import Item from './Item'
+import './List.css'
 
-
-class Item extends Component  {
+class List extends PureComponent  {
 
   deleteItem = () => {
     this.props.func(this.props.id)
   }
 
   render() {
+      console.log('Item Component Render')
     return (
         <div className='todoWrapper'>
-            <button 
-            className='removeTodo' 
+            <button className='removeTodo' 
             onClick={this.deleteItem}>DELETE
-            </button>{this.props.value}
-    </div> 
+            </button>{this.props.newInput}
+        </div> 
     
     )} 
 }
 
-
-export default Item;
+export default List;

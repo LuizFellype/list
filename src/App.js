@@ -1,7 +1,8 @@
 import React, { PureComponent } from 'react';
 import './App.css';
 import AddInput from './components/AddInput'
-import List from './components/List'
+// import Item from './components/Item'
+import Item from './components/Item'
 import { upper } from './sistem/Upper'
 
 const initialState = {
@@ -36,12 +37,12 @@ class App extends PureComponent {
       <div className='cent'>
         <AddInput picking={this.onAddInput}/> 
       </div>
-      <List history={this.state.history} func={this.deletItem} />
-        {/* <ul>{
-          this.state.history.map((el) => 
-          <List func={this.deletItem} id={el.id} newValue={el.value}/>
+      {/* <List history={this.state.history} func={this.deletItem} /> */}
+        <ul>{
+          this.state.history.map((el, i) => 
+          <Item key={i} func={this.deletItem} id={el.id} newInput={el.value}/>
           )}
-        </ul> */}
+        </ul>
       
       </div>
     );
