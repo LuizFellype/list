@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import './App.css';
 import AddInput from './components/AddInput'
-// import List from './components/List'
+import List from './components/List'
 import { upper } from './sistem/Upper'
 
 const initialState = {
@@ -13,7 +13,6 @@ class App extends PureComponent {
   state = { ...initialState }
 
   onAddInput = (val) => {
-    console.log(val)
     if(this.state.value === '') { 
       return
     }
@@ -24,20 +23,20 @@ class App extends PureComponent {
     this.setState({history, counter})
   }
 
-  // deletItem = (id) => {
-  //   const history = this.state.history.filter((el) => el.id !== id)
-  //   this.setState({ history });
-  // }
+  deletItem = (id) => {
+    const history = this.state.history.filter((el) => el.id !== id)
+    this.setState({ history });
+  }
 
   render() {
     console.log('F -> App Render')
-    console.log(this.state.history[this.state.counter -1])
     return (
       <div className='leaf'>
       <h2>Make Your List</h2>
       <div className='cent'>
         <AddInput picking={this.onAddInput}/> 
       </div>
+      <List history={this.state.history} func={this.deletItem} />
         {/* <ul>{
           this.state.history.map((el) => 
           <List func={this.deletItem} id={el.id} newValue={el.value}/>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Item from './Item'
 import './List.css'
 
 class List extends Component  {
@@ -7,11 +8,18 @@ class List extends Component  {
     this.props.func(this.props.id)
   }
 
+
   render() {
+    console.log('List component Render')
     return (
-        <div className='todoWrapper'>
-         <button className='removeTodo' onClick={this.deleteItem}>DELETE</button> {this.props.newValue}
+        <div >
+        <ul>{
+          this.props.history.map(input => <Item value={input.value} />)
+        }</ul>
+
         </div>
+
+        
     );
   }
 }
